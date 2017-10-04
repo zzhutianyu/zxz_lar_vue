@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="test">
         Hello kaihua
     </div>
 </template>
@@ -11,3 +11,10 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    .test {
+        font-size: 50px;
+    }
+
+</style>
