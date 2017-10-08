@@ -10,6 +10,9 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
     @import "./style/common";
+    body, html {
+        @include wh(100%, 100%);
+    }
 </style>
