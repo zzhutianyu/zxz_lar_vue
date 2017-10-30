@@ -5,6 +5,8 @@ import ex from '../components/Example.vue'
 import header from '../components/header/header.vue'
 import footer from '../components/footer/footer.vue'
 import back from '../components/back.vue'
+import index from '../page/home'
+import test from '../test/test.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +26,14 @@ export default new Router({
         path: '/test/back',
         name: 'back',
         component: back
+    }, {
+        path: '/test/index',
+        name: 'index',
+        component: index
+    }, {
+        path: '/test/test',
+        name: 'test',
+        component: test
     }
     ]
 })

@@ -5,10 +5,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './route'
 // import Vuex from './store'
-import './config/rem'
-import Icon from 'vue-svg-icon'
-
-Vue.use(Icon);
+import './config/utils'
 
 new Vue({
     el: '#app',

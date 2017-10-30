@@ -1,5 +1,5 @@
 <template>
-    <div class="h-contianer" :class="{ scroll: scroll}">
+    <div class="h-contianer" :class="{ 'scroll': this.rootScroll}">
         <div class="clearfix header">
             <div class="logo left"><a href="/#"><img src="../../assets/logo.png" alt="" title="诸天域"></a></div>
             <nav>
@@ -51,24 +51,16 @@
                   ]
               }
               ],
-              scroll: true
+              scroll: false
           }
       },
-      method: {
-        scrollFun: function() {
-            let heighttop = document.documentElement.scrollTop || document.body.scrollTop;
-            if (heighttop >= 200) {
-                this.scroll = true;
-                return;
-            }
-            this.scroll = false;
-            return;
-
-        }
-      },
+      props:['rootScroll'],
       mounted() {
-          window.addEventListener('scroll', this.scrollFun)
+
       },
+      methods: {
+
+      }
   }
 </script>
 
@@ -77,14 +69,14 @@
     .h-contianer {
         @include allCover;
        @include wh(100%, inherit);
-        z-index: 10000;
+        z-index: 1000;
         padding: 0 20px;
         position: fixed;
-        -webkit-transition: all .3s ease-out ;
-        -moz-transition: all .3s ease-out ;
-        -ms-transition: all .3s ease-out ;
-        -o-transition: all .3s ease-out ;
-        transition: all .3s ease-out ;
+        -webkit-transition: all .5s ease-out ;
+        -moz-transition: all .5s ease-out ;
+        -ms-transition: all .5s ease-out ;
+        -o-transition: all .5s ease-out ;
+        transition: all .5s ease-out ;
         /*background-color: #27BBF5;*/
 
         background-color: transparent;
@@ -188,7 +180,7 @@
 
     .scroll {
         /*background-col;*/
-        padding: 0 5px;
+        padding: 5px 0;
         background: linear-gradient(to top, #27BBF5, #229ff5);
     }
 

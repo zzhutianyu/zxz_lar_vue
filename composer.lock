@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dd0b97720241864575a8e472b2651a25",
-    "content-hash": "ced382a651ee2bf0821a143661bc28a4",
+    "hash": "5dc0c4cc392a71a2068a60978cab0712",
+    "content-hash": "1b4694275bc2059bb875f30727c6fd5a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3680,6 +3680,36 @@
             "time": "2017-07-22 11:58:36"
         },
         {
+            "name": "eaglewu/swoole-ide-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eaglewu/swoole-ide-helper.git",
+                "reference": "6faa4595efef87ceb98a9fedf32a597f5f4ff261"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/eaglewu/swoole-ide-helper/6faa4595efef87ceb98a9fedf32a597f5f4ff261.zip",
+                "reference": "6faa4595efef87ceb98a9fedf32a597f5f4ff261",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swoole\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "eagle",
+                    "email": "eaglewudi@gmail.com"
+                }
+            ],
+            "description": "Swoole 在IDE下自动识别类、函数、宏，自动补全函数名",
+            "time": "2017-10-12 17:14:40"
+        },
+        {
             "name": "filp/whoops",
             "version": "2.1.10",
             "source": {
@@ -5298,7 +5328,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "eaglewu/swoole-ide-helper": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

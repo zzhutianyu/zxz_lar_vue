@@ -1,11 +1,12 @@
 <template>
     <div class="contianer">
-        <icon></icon>
+        <svg class="load_ellipse" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <ellipse cx="26" cy="10" rx="26" ry="10" style="fill:#ddd;stroke:none;"></ellipse>
+        </svg>
     </div>
 </template>
 
 <script>
-    Icon.inject('back');
     export default {
         data() {
             return {

@@ -34,4 +34,33 @@ export const getStyle = (ele, attr, NumberMode = 'int') => {
     return NumberMode == 'float' ? parseFloat(target) : parseInt(target);
 }
 
+/**
+ *  函数节流
+ */
+export const throttle = function(method, delay) {
+    var last = 0;
+    return function () {
+        var now = +new Date();
+        if(now - last > delay) {
+            method.apply(this, arguments);
+            last = now;
+        }
+    }
+}
+
+/**
+ *  函数防抖
+ */
+export const debounce = function (method, delay) {
+    var timer = null;
+    return function() {
+        var context = this,
+            args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            method.apply(context, args);
+        }, delay);
+    }
+}
+
 

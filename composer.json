@@ -20,6 +20,7 @@
         "zizaco/entrust": "^1.8"
     },
     "require-dev": {
+        "eaglewu/swoole-ide-helper": "dev-master",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
@@ -34,7 +35,9 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/functions.php"
+            "app/Helpers/functions.php",
+            "app/Swoole/SwooleServer.php",
+            "app/Swoole/SwooleWeb.php"
         ]
     },
     "autoload-dev": {

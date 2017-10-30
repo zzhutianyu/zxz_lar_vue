@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function() {
-    $user = \App\Test::test();
-    return $user;
+    $data = session()->get('zhu');
+    return $data;
 });

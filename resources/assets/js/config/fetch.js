@@ -37,6 +37,7 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 
         try {
             const reponse = await fetch(url, requestConfig);
+            //noinspection UnnecessaryLocalVariableJS
             const responseJson = await reponse.json();
             return responseJson;
         } catch (error) {
