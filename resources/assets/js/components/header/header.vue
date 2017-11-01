@@ -1,5 +1,5 @@
 <template>
-    <div class="h-contianer" :class="{ 'scroll': this.rootScroll}">
+    <div class="h-contianer" :class="{ 'scroll': this.scroll}">
         <div class="clearfix header">
             <div class="logo left"><a href="/#"><img src="../../assets/logo.png" alt="" title="诸天域"></a></div>
             <nav>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+    import { debounce} from '../../config/utils'
   export default {
       name: 'header',
       data() {
@@ -51,15 +52,23 @@
                   ]
               }
               ],
-              scroll: false
+              scroll: true
           }
       },
       props:['rootScroll'],
       mounted() {
-
+          window.addEventListener('scroll', debounce(this.scrollFun, 200));
       },
       methods: {
-
+          scrollFun: function() {
+              let heighttop = document.documentElement.scrollTop || document.body.scrollTop;
+              if (heighttop >= 200) {
+                  this.scroll = false;
+                  return;
+              }
+              this.scroll = true;
+              return;
+          }
       }
   }
 </script>

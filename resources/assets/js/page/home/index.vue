@@ -52,15 +52,7 @@
 
         },
         methods: {
-            scrollFun: function() {
-                    let heighttop = document.documentElement.scrollTop || document.body.scrollTop;
-                    if (heighttop >= 200) {
-                        this.pScroll = false;
-                        return;
-                    }
-                    this.pScroll = true;
-                    return;
-            }
+
         }
     }
 </script>

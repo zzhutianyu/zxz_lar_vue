@@ -14,5 +14,6 @@
     @import "./style/common";
     body, html {
         @include wh(100%, 100%);
+        background-color: #fff;
     }
 </style>

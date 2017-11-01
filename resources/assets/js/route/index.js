@@ -7,6 +7,8 @@ import footer from '../components/footer/footer.vue'
 import back from '../components/back.vue'
 import index from '../page/home'
 import test from '../test/test.vue'
+import blogIndex from '../page/blog/index.vue'
+import blogList from '../page/blog/list.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +36,20 @@ export default new Router({
         path: '/test/test',
         name: 'test',
         component: test
+    }, {
+        path: '/blog/',
+        name: 'blog',
+        component: blogIndex,
+        children: [
+            {
+                path: 'list',
+                name: 'blog-list',
+                components: {
+                    fade: blogList
+                }
+
+            }
+        ]
     }
     ]
 })

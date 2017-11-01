@@ -7,7 +7,7 @@
                          <li>个人</li>
                          <li class="f-qq">
                              <div class="f-erwei">
-                                 <img src="../../assets/qq-erwei.jpg" alt="">
+                                 <img src="../../assets/weixin.jpg" alt="">
                              </div>
                          </li>
                          <li class="f-weixin">
