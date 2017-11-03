@@ -19,7 +19,7 @@ Route::get('/test', function() {
     return $data;
 });
 
-Route::any('/api/git/pull',  function (Request $request) {
+Route::any('/api/git/pull',  function (\Illuminate\Http\Request $request) {
     Artisan::call('git:pull', [
         'ref' => $request->input('ref')
     ]);
