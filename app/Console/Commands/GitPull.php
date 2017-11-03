@@ -37,7 +37,11 @@ class GitPull extends Command
      */
     public function handle()
     {
-        exec('git pull origin', $output);
-        $this->line($output);
+        $ref = $this->argument('ref');
+        if ($ref === env('GIT_BRANCH', 'refs/heads/master')) {
+            $basePath = base_path();
+            exec("cd $basePath\ngit pull", $output);
+            echo nl2br(implode($output, "\n"));
+        }
     }
 }

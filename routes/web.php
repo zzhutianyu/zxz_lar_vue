@@ -18,3 +18,10 @@ Route::get('/test', function() {
     $data = session()->get('zhu');
     return $data;
 });
+
+Route::any('/api/git/pull',  function (Request $request) {
+    Artisan::call('git:pull', [
+        'ref' => $request->input('ref')
+    ]);
+});
+
