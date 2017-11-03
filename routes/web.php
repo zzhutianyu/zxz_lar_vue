@@ -25,3 +25,4 @@ Route::any('/api/git/pull',  function (\Illuminate\Http\Request $request) {
     ]);
 });
 
+Route::get('', function(){});
