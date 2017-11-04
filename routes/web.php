@@ -19,6 +19,6 @@ Route::get('/', function () {
 Route::any('/api/git/pull',  function (\Illuminate\Http\Request $request) {
     Artisan::call('git:pull');
 });
-
+Route::post('', function() {});
 
 
