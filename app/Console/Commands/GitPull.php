@@ -40,7 +40,7 @@ class GitPull extends Command
 
 
             $basePath = base_path();
-            exec("cd $basePath\ngit pull\nnpm run production", $output);
+            exec("cd $basePath\ngit pull", $output);
             echo nl2br(implode($output, "\n"));
 
     }
