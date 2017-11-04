@@ -14,10 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test', function() {
-    $data = session()->get('zhu');
-    return $data;
-});
+
 
 Route::any('/api/git/pull',  function (\Illuminate\Http\Request $request) {
     Artisan::call('git:pull');
