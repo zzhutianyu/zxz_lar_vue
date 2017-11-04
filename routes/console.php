@@ -18,6 +18,3 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
 
-Artisan::command('git', function() {
-   echo 'zhuxingzhao';
-});
