@@ -20,9 +20,7 @@ Route::get('/test', function() {
 });
 
 Route::any('/api/git/pull',  function (\Illuminate\Http\Request $request) {
-    Artisan::call('git:pull', [
-        'ref' => $request->input('ref')
-    ]);
+    Artisan::call('git:pull');
 });
 
 
