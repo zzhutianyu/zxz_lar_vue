@@ -11,7 +11,7 @@ class GitPull extends Command
      *
      * @var string
      */
-    protected $signature = 'git:pull {ref}';
+    protected $signature = 'git:pull';
 
     /**
      * The console command description.
@@ -37,11 +37,11 @@ class GitPull extends Command
      */
     public function handle()
     {
-        $ref = $this->argument('ref');
-        if ($ref === env('GIT_BRANCH', 'refs/heads/master')) {
+
+
             $basePath = base_path();
             exec("cd $basePath\ngit pull", $output);
             echo nl2br(implode($output, "\n"));
-        }
+
     }
 }
