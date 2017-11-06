@@ -1,39 +1,34 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //test
-import ex from '../components/Example.vue'
-import header from '../components/header/header.vue'
-import footer from '../components/footer/footer.vue'
-import back from '../components/back.vue'
 import index from '../page/home'
 import test from '../test/test.vue'
+import bloglist from '../page/blog/list.vue'
+import posts from '../page/blog/posts.vue'
+import post from '../page/blog/post.vue'
 
 Vue.use(Router)
 
 export default new Router({
     routes: [{
-        path: '/',
-        name: 'Hello',
-        component: ex
-    }, {
-        path: '/test/header',
-        name: 'header',
-        component: header
-    }, {
-        path: '/test/footer',
-        name: 'footer',
-        component: footer
-    }, {
-        path: '/test/back',
-        name: 'back',
-        component: back
-    }, {
         path: '/test/index',
         name: 'index',
         component: index
     }, {
-        path: '/test/test',
+        path: '/test/list',
         name: 'test',
-        component: test
+        component: bloglist,
+        children:[{
+            path: 'posts',
+            components:{
+                fade: posts
+            }
+        }, {
+            path: 'post',
+            components: {
+                fade: post
+            }
+        }
+        ]
     }]
 })

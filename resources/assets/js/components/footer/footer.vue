@@ -1,5 +1,5 @@
 <template>
-     <div class="container">
+     <div class="m-container">
          <footer>
              <div class="f-con clearfix">
                  <div class="f-item">
@@ -7,12 +7,12 @@
                          <li>个人</li>
                          <li class="f-qq">
                              <div class="f-erwei">
-                                 <img src="../../assets/weixin.jpg" alt="">
+                                 <img src="/assets/weixin.jpg" alt="">
                              </div>
                          </li>
                          <li class="f-weixin">
                              <div class="f-erwei">
-                                 <img src="../../assets/weixin.jpg" alt="">
+                                 <img src="/assets/weixin.jpg" alt="">
                                  <p>关注微信号</p>
                              </div>
                          </li>
@@ -63,7 +63,7 @@
 
 <style lang="scss" scoped>
     @import "../../style/mixin";
-    .container {
+    .m-container {
         @include wh(100%, 350px);
         background-color: #27BBF5;
         footer {
@@ -84,11 +84,11 @@
                         .f-qq {
                             position: relative;
                             margin: 0 auto;
-                            @include backImg('../../assets/qq.png');
+                            @include backImg('/assets/qq.png');
                             @include wh(32px, 32px);
 
                             &:hover {
-                                @include backImg('../../assets/qq1.png');
+                                @include backImg('/assets/qq1.png');
                                 .f-erwei {
                                     display: block;
                                 }
@@ -122,10 +122,10 @@
                         .f-weixin {
                             position: relative;
                             margin: 0 auto;
-                            @include backImg('../../assets/weixin.png');
+                            @include backImg('/assets/weixin.png');
                             @include wh(32px, 32px);
                             &:hover {
-                                @include backImg('../../assets/weixin1.png');
+                                @include backImg('/assets/weixin1.png');
                                 .f-erwei {
                                     display: block;
                                 }
@@ -167,11 +167,11 @@
                         .f-github {
                             position: relative;
                             margin: 0 auto;
-                            @include backImg('../../assets/github.png');
+                            @include backImg('/assets/github.png');
                             @include wh(32px, 32px);
 
                             &:hover {
-                                @include backImg('../../assets/github1.png');
+                                @include backImg('/assets/github1.png');
                                 .f-erwei {
                                     display: block;
                                 }
@@ -226,6 +226,7 @@
             background: #27BBF5;
             line-height: 60px;
             .cr {
+                margin:0;
                 margin-left: 30%;
                 @include fontColor(16px, #fff);
             }
