@@ -1,0 +1,39 @@
+<template>
+    <v-container fluid fill-heigh>
+        <v-toolbar>
+            <v-toolbar-title>文章</v-toolbar-title>
+        </v-toolbar>
+        <v-list>
+            <v-list-tile avatar v-for="item in items" v-bind:key="item.title" @click="">
+                <v-list-tile-avatar>
+                    <img v-bind:src="item.avatar"/>
+                </v-list-tile-avatar>
+                <v-list-tile-action>
+                    <v-icon v-if="item.icon" color="pink">star</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title v-text="item.title"></v-list-tile-title>
+                </v-list-tile-content>
+                <v-space></v-space>
+                <v-btn fab dark color="cyan">
+                    <v-icon dark>edit</v-icon>
+                </v-btn>
+            </v-list-tile>
+        </v-list>
+
+    </v-container>
+
+</template>
+
+<script>
+    export default {
+        data: () => ({
+            items: [
+                {icon: true, title: 'Jason Oner', avatar: '/static/doc-images/lists/1.jpg'},
+                {title: 'Travis Howard', avatar: '/static/doc-images/lists/2.jpg'},
+                {title: 'Ali Connors', avatar: '/static/doc-images/lists/3.jpg'},
+                {title: 'Cindy Baker', avatar: '/static/doc-images/lists/4.jpg'},
+            ]
+        })
+    }
+</script>

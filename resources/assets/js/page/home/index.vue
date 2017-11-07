@@ -2,7 +2,9 @@
 
     <v-app id="inspire">
         <v-toolbar color="light-blue" dark fixed lights-out app>
-            <v-toolbar-title><router-link to="/"><img src="/assets/logo.png" alt="" style="width:6rem; heigh: 4rem"></router-link></v-toolbar-title>
+            <v-toolbar-title>
+                <router-link to="/"><img src="/assets/logo.png" alt="" style="width:6rem; heigh: 4rem"></router-link>
+            </v-toolbar-title>
         </v-toolbar>
         <main>
             <v-content>
@@ -73,7 +75,7 @@
     import cheader from '../../components/header/header.vue'
     import cfooter from '../../components/footer/footer.vue'
     import loading from '../../components/loading.vue'
-    import {throttle } from '../../config/utils'
+    import {throttle} from '../../config/utils'
 
     export default {
         components: {
@@ -116,7 +118,7 @@
 
         },
         methods: {
-            onScroll (e) {
+            onScroll(e) {
 
             },
             onResize() {
