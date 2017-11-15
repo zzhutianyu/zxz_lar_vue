@@ -21,10 +21,10 @@
                                 <h4><span style="font-weight:bold">诸兴天域</span></h4>
                                 <h5 class="text-xs-center">诸天域的个人小站</h5>
                                 <v-layout justify-space-between>
-                                    <a href="javascript:;" class="body-2">Home</a>
-                                    <a href="javascript:;" class="body-2">Home</a>
-                                    <a href="javascript:;" class="body-2">About</a>
-                                    <a href="javascript:;" class="body-2">Other</a>
+                                    <a href="#" class="body-2">Home</a>
+                                    <a href="#/blog" class="body-2">Blog</a>
+                                    <a href="#/about" class="body-2">About</a>
+                                    <a href="#/contact" class="body-2">Contact</a>
                                 </v-layout>
                             </div>
                         </v-flex>
@@ -34,9 +34,9 @@
                                     <v-card-media
                                             class="white--text"
                                             height="170px"
-                                            :src="post.imgUrl"
+                                            :src="post.image_url"
                                     >
-                                        <v-container fill-height fluid>
+                                          <v-container fill-height fluid>
                                             <v-layout fill-height>
                                                 <v-flex xs12 align-end flexbox>
                                                     <span class="headline">{{ post.title }}</span>
@@ -45,7 +45,7 @@
                                         </v-container>
                                     </v-card-media>
                                     <v-card-text>
-                                        {{ post.content }}
+                                        {{ post.sub }}
                                     </v-card-text>
                                     <v-card-actions>
                                         <v-btn icon class="red--text">
@@ -76,6 +76,7 @@
     import cfooter from '../../components/footer/footer.vue'
     import loading from '../../components/loading.vue'
     import {throttle} from '../../config/utils'
+    import {baseUrl} from '../../config/env'
 
     export default {
         components: {
@@ -91,30 +92,14 @@
                     x: 0,
                     y: 0
                 },
-                posts: [
-                    {
-                        title: 'Fusce ullamcorper tellus sed maximus',
-                        content: 'Fusce ullamcorper tellus sed maximus rutrum. Donec imperdiet ultrices maximus. Donec non tellus non neque pellentesque fermentum. Aenean in pellentesque urna.',
-                        imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/drop.jpg'
-                    },
-                    {
-                        title: 'Donec vitae suscipit lectus, a luctus diam.',
-                        content: 'Donec vitae suscipit lectus, a luctus diam. Proin vitae felis gravida, lobortis massa sit amet, efficitur erat. Morbi vel ultrices nisi. Aenean arcu sapien, rutrum nec mollis id, condimentum quis orci.',
-                        imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/docks.jpg'
-                    },
-                    {
-                        title: 'Vestibulum condimentum quam eu est convallis',
-                        content: ' at sagittis sapien vulputate. Vivamus laoreet lacus id magna rutrum dapibus. Donec vel pellentesque arcu. Maecenas mollis odio tempus felis elementum commodo. Quisque gravida, est quis tincidunt bibendum, nibh elit dapibus mauris.',
-                        imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/plane.jpg'
-                    }
-                ]
+                posts: []
             }
         },
         props: {
             source: String
         },
         mounted() {
-
+            this.getPosts();
 
         },
         methods: {
@@ -123,6 +108,12 @@
             },
             onResize() {
                 this.windowsize = {x: window.innerWidth, y: window.innerHeight}
+            },
+            async getPosts() {
+                await this.$http.get(baseUrl + '/posts/index').then(res => {
+                    this.posts = res.body;
+                    console.log(this.posts);
+                });
             }
 
         }

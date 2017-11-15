@@ -33,15 +33,11 @@
                  <div class="f-item">
                      <ul>
                          <li>友情-链接</li>
-                         <li></li>
+                         <li v-for="item in rolls">
+                             <a :href="item.url">{{ item.name}}</a>
+                         </li>
                      </ul>
                  </div>
-             </div>
-             <div class="m-connect">
-                 <div class="item">
-
-                 </div>
-
              </div>
          </footer>
          <div class="copyright">
@@ -51,17 +47,28 @@
 </template>
 
 <script>
+    import {baseUrl} from '../../config/env'
     export default {
         data() {
             return {
+                rolls: []
 
-
+            }
+        },
+        mounted() {
+          this.getRolls();
+        },
+        methods: {
+            async getRolls() {
+                await this.$http.get(baseUrl + '/rolls').then(res => {
+                    this.rolls = res.body;
+                })
             }
         }
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     @import "../../style/mixin";
     .m-container {
         @include wh(100%, 350px);
@@ -204,6 +211,7 @@
                             a {
                                 @include wh(100%, 25px);
                                 @include fontColor(14px, #888);
+                                text-decoration: none;
 
                                 &:hover {
                                     text-decoration: underline;

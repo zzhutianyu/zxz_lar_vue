@@ -2,7 +2,7 @@
     <v-app>
         <v-navigation-drawer dark class="blue lighten-3" permanent clipped app>
             <v-list>
-                <v-list-tile v-for="item in items" :key="item.title" @click="">
+                <v-list-tile v-for="item in items" :key="item.title" @click="to(item.path)">
                     <v-list-tile-action>
                         <v-icon dark>{{ item.icon }}</v-icon>
                     </v-list-tile-action>
@@ -22,15 +22,24 @@
 </template>
 
 <script>
+    import router from '../../route'
     export default {
         data: () => ({
             items: [
-                { title: 'Dashboard', icon: 'dashboard' },
-                { title: 'Account', icon: 'account_box' },
-                { title: 'Admin', icon: 'gavel' }
+                { title: 'Admin', icon: 'gavel', path: '/admin/' },
+                { title: 'Posts', icon: 'create', path: '/admin/posts'},
+                { title: 'File', icon: 'cloud', path: '' },
+                { title: 'BlogRoll', icon: 'attach_file', path: '/admin/roll'}
             ],
             right: null
-        })
+        }),
+        methods: {
+            to: function(path) {
+                router.push({
+                    path: path
+                })
+            }
+        }
     }
 </script>
 

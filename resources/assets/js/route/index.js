@@ -12,47 +12,56 @@ import mIndex from '../page/admin/index.vue'
 import mPosts from '../page/admin/posts.vue'
 import mEdit from '../page/admin/postEdit.vue'
 import upload from '../components/upload.vue'
+import roll from '../page/admin/Roll.vue'
+
 Vue.use(Router)
 
 export default new Router({
     routes: [{
-        path: '/test/index',
+        path: '/test/test',
+        name: 'te',
+        component: test
+    }, {
+        path: '/index',
         name: 'index',
         component: index
     }, {
-        path: '/test/list',
-        name: 'test',
+        path: '/blog',
+        name: 'blog',
         component: bloglist,
-        children:[{
-            path: 'posts',
-            components:{
-                fade: posts
-            }
+        children: [{
+            path: '',
+            component: posts
         }, {
             path: 'post',
-            components: {
-                fade: post
-            }
+            component: post
         }
         ]
     }, {
-        path: '/test/admin/login',
+        path: '/admin/login',
         name: 'login',
         component: login
     }, {
-        path: '/test/admin/',
+        path: '/admin/',
         name: 'adminIndex',
+        meta: {
+            admin: true
+        },
         component: adminIndex,
-        children: [{
-            path: 'index',
-            component: mIndex
-        }, {
-            path: 'posts',
-            component: mPosts
-        }, {
-            path: 'edit',
-            component: mEdit
-        }]
+        children: [
+            {
+                path: '',
+                component: mIndex
+            }, {
+                path: 'posts',
+                component: mPosts
+            }, {
+                path: 'edit',
+                component: mEdit
+            }, {
+                path: 'roll',
+                component: roll
+            }]
     }, {
         path: '/test/upload',
         component: upload

@@ -4,19 +4,32 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './route'
-import KeenUi from 'keen-ui'
-import 'keen-ui/dist/keen-ui.css'
 import Vuetify from 'vuetify'
+import Vr from 'vue-resource'
 import 'vuetify/dist/vuetify.css'
 // import Vuex from './store'
 import './config/utils'
+import store from './store'
+import {getStore} from "./config/utils";
 
-Vue.use(KeenUi);
 Vue.use(Vuetify);
+Vue.use(Vr);
+router.beforeEach((to, form, next) => {
+    if (to.path == '/') {
+        next('/index');
+    }
+    if (to.meta.admin) {
+        if (localStorage.getItem('token')) {
 
+        }
+    } else {
+        next();
+    }
+})
 new Vue({
     el: '#app',
     router,
+    store,
     template: '<App/>',
     components: {App}
 })

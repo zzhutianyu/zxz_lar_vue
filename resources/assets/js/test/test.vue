@@ -1,9 +1,8 @@
 <template>
-    <div class="a" :style="{ width: this.a + 'px'}" >
-        <button @click="check()" class="btn">
-
+    <div class="a" >
+        <button @click="login()" class="btn">
         </button>
-
+        <button @click="test" class="btn"></button>
     </div>
 </template>
 
@@ -11,18 +10,28 @@
     export default {
         data() {
             return {
-                a: 100
             }
         },
         mounted() {
-          window.onresize = () => {
-              this.a =  (window.innerWidth - 500);
-          }
         },
         methods: {
-            check() {
-                this.a += 1;
-                console.log(this.a);
+
+            login() {
+                this.$store.dispatch('login').then(
+                    res => {
+                        console.log(res);
+                    }
+                )
+            },
+            async test() {
+                let header = {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+                console.log(header);
+                await this.$http.get('http://localhost:8000/api/test', {headers:header}).then(res => {
+                    console.log(res);
+                });
             }
         }
     }

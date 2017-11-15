@@ -169,6 +169,10 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Jenssegers\Mongodb\MongodbServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
+        Moloquent\MongodbServiceProvider::class,
+        Moloquent\Passport\PassportServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -178,6 +182,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
 
 
     ],
@@ -228,8 +233,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Moloquent' => Jenssegers\Mongodb\Eloquent\Model::class,
+        //'Moloquent' => Jenssegers\Mongodb\Eloquent\Model::class,
         'Mongo' => Jenssegers\Mongodb\MongodbServiceProvider::class,
+        'Moloquent' => Moloquent\Eloquent\Model::class,
 
 
     ],

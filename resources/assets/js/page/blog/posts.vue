@@ -3,13 +3,13 @@
         <v-content>
             <v-container>
                 <v-layout row wrap align-center>
-                    <v-flex xs12 md5 offset-md2>
+                    <v-flex xs12 md12 lg12 sm12 >
                         <div v-for="post in posts" :key="post.title">
                             <v-card class="my-3" hover>
                                 <v-card-media
                                         class="white--text"
                                         height="170px"
-                                        :src="post.imgUrl"
+                                        :src="post.image_url"
                                 >
                                     <v-container fill-height fluid>
                                         <v-layout fill-height>
@@ -20,7 +20,7 @@
                                     </v-container>
                                 </v-card-media>
                                 <v-card-text>
-                                    {{ post.content }}
+                                    {{ post.sub }}
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-btn icon class="red--text">
@@ -33,7 +33,7 @@
                                         <v-icon medium>fa-facebook</v-icon>
                                     </v-btn>
                                     <v-spacer></v-spacer>
-                                    <v-btn flat class="blue--text">Read More</v-btn>
+                                    <v-btn flat class="blue--text" @click="to(post.g_id)">Read More</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </div>
@@ -47,26 +47,39 @@
 </template>
 
 <script>
+    import {baseUrl} from '../../config/env'
+    import router from '../../route'
     export default {
         data() {
             return {
-                posts: [
-                    {
-                        title: 'Fusce ullamcorper tellus sed maximus',
-                        content: 'Fusce ullamcorper tellus sed maximus rutrum. Donec imperdiet ultrices maximus. Donec non tellus non neque pellentesque fermentum. Aenean in pellentesque urna.',
-                        imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/drop.jpg'
-                    },
-                    {
-                        title: 'Donec vitae suscipit lectus, a luctus diam.',
-                        content: 'Donec vitae suscipit lectus, a luctus diam. Proin vitae felis gravida, lobortis massa sit amet, efficitur erat. Morbi vel ultrices nisi. Aenean arcu sapien, rutrum nec mollis id, condimentum quis orci.',
-                        imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/docks.jpg'
-                    },
-                    {
-                        title: 'Vestibulum condimentum quam eu est convallis',
-                        content: ' at sagittis sapien vulputate. Vivamus laoreet lacus id magna rutrum dapibus. Donec vel pellentesque arcu. Maecenas mollis odio tempus felis elementum commodo. Quisque gravida, est quis tincidunt bibendum, nibh elit dapibus mauris.',
-                        imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/plane.jpg'
-                    }
-                ]
+                posts: []
+            }
+        },
+        props: ['page'],
+        watch: {
+          'page': function(val) {
+              this.getPostsList();
+          }
+        },
+        mounted() {
+            this.getPostsList();
+        },
+        methods: {
+            async getPostsList() {
+               await this.$http.get(baseUrl + '/posts/list/' + this.page).then(res => {
+                   this.posts = res.body;
+               })
+            },
+            to(gid) {
+               router.push({
+                   path: '/blog/post/',
+                   query: {
+                       gid: gid
+                   }
+                   }
+               )
+
+
             }
         }
     }

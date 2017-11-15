@@ -7,22 +7,47 @@
                 app
         >
             <v-list dense>
-                <v-list-tile @click="">
-                    <v-list-tile-action>
-                        <v-icon>home</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                        <v-list-tile-title>Home</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile @click="">
-                    <v-list-tile-action>
-                        <v-icon>contact_mail</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                        <v-list-tile-title>Contact</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
+                <router-link to="/">
+                    <v-list-tile @click="">
+                        <v-list-tile-action>
+                            <v-icon>home</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>Home</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </router-link>
+                <router-link to="/blog">
+                    <v-list-tile @click="">
+                        <v-list-tile-action>
+                            <v-icon>import_contacts
+                            </v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>Blog</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </router-link>
+                <router-link to="">
+                    <v-list-tile @click="">
+                        <v-list-tile-action>
+                            <v-icon>record_voice_over</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>About</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </router-link>
+                <router-link to="">
+                    <v-list-tile @click="">
+                        <v-list-tile-action>
+                            <v-icon>contact_mail</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>Contact</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </router-link>
             </v-list>
         </v-navigation-drawer>
         <v-toolbar color="light-blue" dark fixed lights-out app>
@@ -33,9 +58,11 @@
         </v-toolbar>
         <main>
             <v-content>
-                <v-container>
-                    <router-view name="fade"></router-view>
-                </v-container>
+                <transition name="fade">
+                    <v-container>
+                        <router-view :page="page"></router-view>
+                    </v-container>
+                </transition>
                 <v-speed-dial
                         v-model="fab"
                         :top="top"
@@ -46,6 +73,7 @@
                         :hover="hover"
                         :transition="transition"
                         :fixed="fixed"
+                        v-show="!this.pagtional"
                 >
                     <v-btn
                             slot="activator"
@@ -104,24 +132,33 @@
                 console.log(val);
             },
             '$route': function (val) {
-                if (/posts/.test(val.fullPath)) {
-                    this.pagtional = true;
-                } else {
+
+                if (/post/.test(val.fullPath)) {
                     this.pagtional = false;
+                } else {
+                    this.pagtional = true;
                 }
             }
         },
         mounted() {
-            if (/posts/.test(this.$route.fullPath)) {
-                this.pagtional = true;
+
+            if (/post/.test(this.$route.fullPath)) {
+                this.pagtional = false;
             } else {
-                this.pagtional = false
+                this.pagtional = true;
             }
-        }
+        },
+        methods: {}
 
     }
 </script>
 
 <style lang="scss" scoped>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s
+    }
 
+    .fade-enter, .fade-leave-to {
+        opacity: 0
+    }
 </style>
