@@ -38,7 +38,7 @@ export default new Router({
         }
         ]
     }, {
-        path: '/admin/login',
+        path: '/login',
         name: 'login',
         component: login
     }, {
@@ -51,16 +51,28 @@ export default new Router({
         children: [
             {
                 path: '',
-                component: mIndex
+                component: mIndex,
+                meta: {
+                    admin: true
+                }
             }, {
                 path: 'posts',
-                component: mPosts
+                component: mPosts,
+                meta: {
+                    admin: true
+                }
             }, {
                 path: 'edit',
-                component: mEdit
+                component: mEdit,
+                meta: {
+                    admin: true
+                }
             }, {
                 path: 'roll',
-                component: roll
+                component: roll,
+                meta: {
+                    admin: true
+                }
             }]
     }, {
         path: '/test/upload',

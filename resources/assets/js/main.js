@@ -18,10 +18,14 @@ router.beforeEach((to, form, next) => {
     if (to.path == '/') {
         next('/index');
     }
-    if (to.meta.admin) {
-        if (localStorage.getItem('token')) {
+    console.log(to.matched.some(record => record.meta.admin))
 
+    if (to.matched.some(record => record.meta.admin)) {
+        if (!localStorage.getItem('token')) {
+
+            next('/login')
         }
+        next();
     } else {
         next();
     }
