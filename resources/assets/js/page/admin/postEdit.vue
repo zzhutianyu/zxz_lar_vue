@@ -28,7 +28,7 @@
                 </v-layout>
             </v-container>
             <v-card-actions>
-                <v-btn flat @click="test" >Save</v-btn>
+                <v-btn flat @click="update" >Save</v-btn>
                 <v-btn
                         flat
                         color="primary"
@@ -69,9 +69,18 @@
             rules: [
                 (v) => !!v || '不能空'
             ],
-            text: ''
+            text: '',
+            gid: '',
 
         }),
+        mounted(){
+            this.gid = this.$route.query.gid;
+            if (!this.$route.query.gid) {
+                return
+            }
+            console.log('1' + this.$route.query.gid)
+            this.getPost()
+        },
         methods: {
             test() {
                 console.log(this.title + this.sub + this.imageURL + this.content);
@@ -105,7 +114,46 @@
                this.loading = false;
                this.success = true;
                console.log(status);
-           }
+           },
+            async getPost(){
+                let header = {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+                await this.$http.get(baseUrl + '/post/' + this.$route.query.gid, {headers: header}).then(res => {
+                    this.title = res.body[0].title;
+                    this.sub = res.body[0].sub;
+                    this.imageUrl = res.body[0].image_url;
+                    this.content = res.body[0].raw_content;
+                    console.log(res)
+                });
+            },
+            async update() {
+                this.text = '';
+                this.dialog = true;
+                this.loading = true;
+                let header = {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+
+                let data = {
+                    title: this.title,
+                    sub: this.sub,
+                    imageUrl: this.imageUrl,
+                    content: this.content,
+                    gid: this.gid
+                }
+
+
+                let status;
+                await this.$http.post(baseUrl + '/api/post/update', data, {headers: header}).then(res => {
+                    status = res.body.errcode;
+                })
+                this.text = '更新成功';
+                this.loading = false;
+                this.success = true;
+            }
         }
     }
 </script>

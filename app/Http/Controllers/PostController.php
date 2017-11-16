@@ -25,10 +25,8 @@ class PostController extends Controller
 
     public function listPosts($page) {
         $page = (int) $page;
-        $list = Posts::skip(5 * $page)->take(5)->get();
+        $list = Posts::skip(5 *  ($page- 1))->where('g_id', '<>', 0)->take(5)->get();
         return $list;
-
-
     }
     //api-end
 
@@ -45,6 +43,17 @@ class PostController extends Controller
         $new->g_id = ++$gid->gid;
         $new->save();
         $gid->save();
+        return RJM('', '200', 'success');
+    }
+
+    public function upate(Request $request) {
+        $new = Posts::where('g_id', (int) $request->input('gid'))->first();
+        $new->title = $request->input('title');
+        $new->sub = $request->input('sub');
+        $new->image_url = $request->input('imageUrl');
+        $new->raw_content = $request->input('content');
+        $new->html_content = $request->input('content');
+        $new->save();
         return RJM('', '200', 'success');
     }
 }

@@ -2,6 +2,10 @@
     <v-container fluid fill-heigh>
         <v-toolbar>
             <v-toolbar-title>文章</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn fab dark color="red" @click="add">
+                <v-icon dark>add</v-icon>
+            </v-btn>
         </v-toolbar>
         <v-list>
             <v-list-tile avatar v-for="item in items" v-bind:key="item.title" @click="">
@@ -65,7 +69,11 @@
                         gid: gid
                     }
                 })
-
+            },
+            add() {
+                router.push({
+                    path: '/admin/edit'
+                })
             }
         }
     }

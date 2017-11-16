@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth:api']], function() {
      Route::get('/post/posts', 'PostController@Posts');
      Route::post('/post/create', 'PostController@create');
      Route::post('/roll/create', 'RollController@create');
+     Route::post('/post/update', 'PostController@upate');
 //    Route::post('/post/update/{P_id}')
 });
 
