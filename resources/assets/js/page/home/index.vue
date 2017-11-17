@@ -21,7 +21,7 @@
                                 <h4><span style="font-weight:bold">诸兴天域</span></h4>
                                 <h5 class="text-xs-center">诸天域的个人小站</h5>
                                 <v-layout justify-space-between>
-                                    <a href="#" class="body-2">Home</a>
+                                    <a href="#/" class="body-2">Home</a>
                                     <a href="#/blog" class="body-2">Blog</a>
                                     <a href="#/about" class="body-2">About</a>
                                     <a href="#/contact" class="body-2">Contact</a>
