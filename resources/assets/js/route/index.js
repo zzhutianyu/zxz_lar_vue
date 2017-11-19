@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //test
-import index from '../page/home'
-import test from '../test/test.vue'
-import bloglist from '../page/blog/list.vue'
-import posts from '../page/blog/posts.vue'
-import post from '../page/blog/post.vue'
-import login from '../page/admin/login.vue'
-import adminIndex from '../page/admin/adminIndex.vue'
-import mIndex from '../page/admin/index.vue'
-import mPosts from '../page/admin/posts.vue'
-import mEdit from '../page/admin/postEdit.vue'
-import upload from '../components/upload.vue'
-import roll from '../page/admin/Roll.vue'
+const index = r => require.ensure([], () => r(require('../page/home')), 'home');
+const test = r => require.ensure([], () => r(require('../page/blog/list.vue')), 'test');
+const bloglist = r => require.ensure([], () => r(require('../page/blog/list.vue')), 'bloglist');
+const posts = r => require.ensure([], () => r(require('../page/blog/posts.vue')), 'posts');
+const post = r => require.ensure([], () => r(require('../page/blog/post.vue')), 'post');
+const login = r => require.ensure([], () => r(require('../page/admin/login.vue')), 'login');
+const adminIndex = r => require.ensure([], () => r(require('../page/admin/adminIndex.vue')), 'adminIndex');
+const mIndex = r => require.ensure([], () => r(require('../page/admin/index.vue')), 'mIndex');
+const mPosts = r => require.ensure([], () => r(require('../page/admin/posts.vue')), 'mPosts');
+const mEdit = r => require.ensure([], () => r(require('../page/admin/postEdit.vue')), 'mEdit');
+const upload = r => require.ensure([], () => r(require('../components/upload.vue')), 'upload');
+const roll = r => require.ensure([], () => r(require('../page/admin/Roll.vue')), 'roll');
 
 Vue.use(Router)
 
