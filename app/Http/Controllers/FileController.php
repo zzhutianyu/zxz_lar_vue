@@ -83,6 +83,7 @@ class FileController extends Controller
         $fileName = $request->get('file_name');
         $fileName = $fileName ?: $file['name'];
         $path = str_finish($request->get('folder'), '/') . $fileName;
+        $path = iconv('UTF-8', 'gb2312', $path);
         $content = File::get($file['tmp_name']);
 
         $result = $this->manager->saveFile($path, $content);
