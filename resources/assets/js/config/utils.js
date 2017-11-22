@@ -310,3 +310,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
     }, 20);
 }
 
+/**
+ * 获取meta
+ */
+

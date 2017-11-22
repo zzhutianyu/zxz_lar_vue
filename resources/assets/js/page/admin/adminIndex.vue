@@ -28,7 +28,7 @@
             items: [
                 { title: 'Admin', icon: 'gavel', path: '/admin/' },
                 { title: 'Posts', icon: 'create', path: '/admin/posts'},
-                { title: 'File', icon: 'cloud', path: '' },
+                { title: 'File', icon: 'cloud', path: '/admin/file' },
                 { title: 'BlogRoll', icon: 'attach_file', path: '/admin/roll'}
             ],
             right: null

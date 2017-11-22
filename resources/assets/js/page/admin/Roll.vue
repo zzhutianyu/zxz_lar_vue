@@ -22,8 +22,8 @@
             <v-card>
                 <v-progress-circular indeterminate v-bind:size="50" v-bind:width="7" color="purple"
                                      v-show="loading"></v-progress-circular>
-                <v-card-text v-show="success">{{ this.text}}</v-card-text>
-                <v-card-actions v-show="success">
+                <v-card-text >{{ this.text}}</v-card-text>
+                <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="green darken-1" flat @click.native="dialog = false">确定</v-btn>
                 </v-card-actions>

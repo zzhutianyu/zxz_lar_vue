@@ -13,6 +13,7 @@ const mPosts = r => require.ensure([], () => r(require('../page/admin/posts.vue'
 const mEdit = r => require.ensure([], () => r(require('../page/admin/postEdit.vue')), 'mEdit');
 const upload = r => require.ensure([], () => r(require('../components/upload.vue')), 'upload');
 const roll = r => require.ensure([], () => r(require('../page/admin/Roll.vue')), 'roll');
+const file = r => require.ensure([], () => r(require('../page/admin/file.vue')), 'file');
 
 Vue.use(Router)
 
@@ -70,6 +71,12 @@ export default new Router({
             }, {
                 path: 'roll',
                 component: roll,
+                meta: {
+                    admin: true
+                }
+            }, {
+                path: 'file',
+                component: file,
                 meta: {
                     admin: true
                 }

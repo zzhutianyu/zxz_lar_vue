@@ -26,6 +26,11 @@ Route::group(['middleware' => ['auth:api']], function() {
      Route::post('/post/create', 'PostController@create');
      Route::post('/roll/create', 'RollController@create');
      Route::post('/post/update', 'PostController@upate');
+    Route::get('/file', 'FileController@store');
+    Route::post('/file/create', 'FileController@createFolder');
+    Route::post('/file/delete', 'FileController@deleteFolder');
+    Route::post('/file/upload', 'FileController@uploadFile');
+    Route::post('/file/deleteFile', 'FileController@deleteFile');
 //    Route::post('/post/update/{P_id}')
 });
 

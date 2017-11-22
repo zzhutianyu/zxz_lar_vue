@@ -29,10 +29,14 @@ Route::get('/posts/index', 'PostController@indexPosts');
 Route::get('/posts/list/{page}', 'PostController@listPosts');
 Route::get('/rolls', 'RollController@rolls');
 
-
+//test
 Route::get('/test', function() {
     $test = new \App\Model\Test;
     $test->name = 'ZHUXINGZHAO';
     $test->save();
     return dd($test);
 });
+
+
+
+

@@ -14,6 +14,7 @@ import {getStore} from "./config/utils";
 
 Vue.use(Vuetify);
 Vue.use(Vr);
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content');
 router.beforeEach((to, form, next) => {
     if (to.path == '/') {
         next('/index');
