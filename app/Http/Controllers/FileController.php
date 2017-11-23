@@ -26,7 +26,7 @@ class FileController extends Controller
     public function createFolder(Request $request) {
         $new_folder = $request->input('new_folder');
         $folder = $request->input('folder') . '/' . $new_folder;
-
+        $folder = iconv('UTF-8', 'gb2312', $folder);
         $result = $this->manager->createDirectory($folder);
 
         if ($result === true) {

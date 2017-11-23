@@ -58,7 +58,7 @@
                                             <v-icon medium>fa-facebook</v-icon>
                                         </v-btn>
                                         <v-spacer></v-spacer>
-                                        <v-btn flat class="blue--text">Read More</v-btn>
+                                        <v-btn flat class="blue--text" @click="to(post.g_id)">Read More</v-btn>
                                     </v-card-actions>
                                 </v-card>
                             </div>
@@ -77,6 +77,7 @@
     import loading from '../../components/loading.vue'
     import {throttle} from '../../config/utils'
     import {baseUrl} from '../../config/env'
+    import router from '../../route'
 
     export default {
         components: {
@@ -114,6 +115,15 @@
                     this.posts = res.body;
                     console.log(this.posts);
                 });
+            },
+            to(gid) {
+                router.push({
+                        path: '/blog/post/',
+                        query: {
+                            gid: gid
+                        }
+                    }
+                )
             }
 
         }
