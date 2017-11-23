@@ -68,6 +68,7 @@
             </v-content>
         </main>
         <cfooter></cfooter>
+        <loading :parentLoad="loading"></loading>
     </v-app>
 </template>
 
@@ -93,14 +94,19 @@
                     x: 0,
                     y: 0
                 },
-                posts: []
+                posts: [],
+                loading: true
             }
         },
         props: {
             source: String
         },
+        created() {
+
+        },
         mounted() {
             this.getPosts();
+            this.loading = false;
 
         },
         methods: {

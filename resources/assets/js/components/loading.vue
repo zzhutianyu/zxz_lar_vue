@@ -23,7 +23,7 @@
         background-color: #f5f5f5;
         z-index: 10000;
         .loading {
-            @include wh(2rem, 2rem);
+            @include wh(400px, 400px);
             @include center;
         }
     }
