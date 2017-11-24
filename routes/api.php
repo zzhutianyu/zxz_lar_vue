@@ -34,3 +34,6 @@ Route::group(['middleware' => ['auth:api']], function() {
 //    Route::post('/post/update/{P_id}')
 });
 
+
+Route::any('/wechat', "WeChatController@serve");
+

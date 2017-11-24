@@ -15,11 +15,12 @@ import {getStore} from "./config/utils";
 Vue.use(Vuetify);
 Vue.use(Vr);
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name=csrf-token]').getAttribute('content');
+
 router.beforeEach((to, form, next) => {
     if (to.path == '/') {
         next('/index');
     }
-    console.log(to.matched.some(record => record.meta.admin))
+    //console.log(to.matched.some(record => record.meta.admin))
 
     if (to.matched.some(record => record.meta.admin)) {
         if (!localStorage.getItem('token')) {
