@@ -2,8 +2,8 @@
     <main>
         <v-content style="background:#27BBF5;">
             <v-container color="light-blue" >
-                <v-layout row wrap>
-                        <v-flex xs12   sm4 >
+                <v-layout row wrap align-center>
+                        <v-flex xs12 md4>
                             <div class="f-item">
                                 <ul>
                                     <li>个人</li>
@@ -26,7 +26,7 @@
 
                             </div>
                         </v-flex>
-                        <v-flex xs12  sm4 >
+                        <v-flex xs12  md4 >
                             <div class="f-item">
                                 <ul>
                                     <li>APP-LIST</li>
@@ -35,7 +35,7 @@
 
                             </div>
                         </v-flex>
-                        <v-flex xs12  sm4 >
+                        <v-flex xs12  md4 >
                             <div class="f-item">
                                 <ul>
                                     <li>友情-链接</li>
@@ -197,7 +197,7 @@
             }
 
             /*margin-left: 40px;*/
-            @include wh(280px, 280px);
+            @include wh(auto, 280px);
             padding: 20px;
             ul {
                 @include wh(250px, auto);
