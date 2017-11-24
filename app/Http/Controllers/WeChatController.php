@@ -17,8 +17,8 @@ class WeChatController extends Controller
             'debug'  => false,
             'app_id' => config('wechat.app_id'),
             'secrte' => config('wechat.secrte'),
-            'token' => config('wechat.token')
-
+            'token' => config('wechat.token'),
+            'aes_key' => config('wechat.aes_key')
         );
 
         $this->wechat = new Application($option);
