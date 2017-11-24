@@ -15,17 +15,20 @@ class WeChatController extends Controller
 
     public function __construct()
     {
+        $predis = app('redis')->connection()->client();
+        $cacheDriver = new PredisCache($predis);
+
         $option = array(
             'debug'  => false,
             'app_id' => config('wechat.app_id'),
             'secrte' => config('wechat.secrte'),
             'token' => config('wechat.token'),
-            'aes_key' => config('wechat.aes_key')
+            'aes_key' => config('wechat.aes_key'),
+            'cache' => $cacheDriver
         );
-        $predis = app('redis')->connection()->client();
-        $cacheDriver = new PredisCache($predis);
+
         $this->wechat = new Application($option);
-        $this->wechat->cache = $cacheDriver;
+
     }
 
     public function serve() {
