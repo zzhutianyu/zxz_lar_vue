@@ -38,7 +38,7 @@ class GitPull extends Command
     public function handle()
     {
             $basePath = base_path();
-            exec("cd $basePath\ngit pull", $output);
+            exec("cd $basePath\ngit reset --hard\ngit pull", $output);
             echo nl2br(implode($output, "\n"));
     }
 }

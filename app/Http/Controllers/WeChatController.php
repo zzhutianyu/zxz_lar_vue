@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use EasyWeChat\Foundation\Application;
+use EasyWeChat\Message\Text;
 use http\Exception\BadMethodCallException;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,9 @@ class WeChatController extends Controller
      */
     public function text($message)
     {
-        $response = $this->matchKeyword($message);
+        //$response = $this->matchKeyword($message);
+        $response = new Text();
+        $response->content = 'test';
         return $response ? $response : '';
     }
     /**
