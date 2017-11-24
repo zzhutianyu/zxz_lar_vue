@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Doctrine\Common\Cache\PredisCache;
 use EasyWeChat\Foundation\Application;
 use EasyWeChat\Message\Text;
 use http\Exception\BadMethodCallException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class WeChatController extends Controller
 {
@@ -20,8 +22,10 @@ class WeChatController extends Controller
             'token' => config('wechat.token'),
             'aes_key' => config('wechat.aes_key')
         );
-
+        $predis = app('redis')->connection()->client();
+        $cacheDriver = new PredisCache($predis);
         $this->wechat = new Application($option);
+        $this->wechat->cache = $cacheDriver;
     }
 
     public function serve() {
