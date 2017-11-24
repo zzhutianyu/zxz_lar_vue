@@ -191,6 +191,7 @@
                     a {
                         display: block;
                         @include wh(32px, 32px);
+                        @include fontColor(auto, #fff)
                     }
 
                 }
