@@ -7,10 +7,7 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function Test(){
-        $data = array(
-            'a' => '1',
-            'b' => '2'
-        );
-        return RJM($data, 200);
+        $ip = geoip("183.246.21.245");
+        return dd($ip);
     }
 }

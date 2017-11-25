@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',  "IndexController@index");
 
 
 Route::any('/api/git/pull',  function (\Illuminate\Http\Request $request) {
@@ -30,7 +28,7 @@ Route::get('/posts/list/{page}', 'PostController@listPosts');
 Route::get('/rolls', 'RollController@rolls');
 Route::post('/contact', 'ContactController@send');
 //test
-Route::get('/test', 'ContactController@send');
+Route::get('/test', 'TestController@Test');
 
 
 

@@ -173,6 +173,7 @@ return [
         Moloquent\MongodbServiceProvider::class,
         Moloquent\Passport\PassportServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -236,8 +237,7 @@ return [
         //'Moloquent' => Jenssegers\Mongodb\Eloquent\Model::class,
         'Mongo' => Jenssegers\Mongodb\MongodbServiceProvider::class,
         'Moloquent' => Moloquent\Eloquent\Model::class,
-
-
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
     ],
 
 ];
