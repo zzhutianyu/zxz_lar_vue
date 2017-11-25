@@ -1,4 +1,4 @@
 export const baseUrl = 'http://www.zxzflower.net';
 export const grantType = 'password';
-export const clientId = '5a094094d65ea81a48002974';
-export const clientSecrte = 'cfYQoE3NqNgoNeytvuwtNaJXJmWJpgIkx5V3xhqf';
+export const clientId = '5a192ab5d65ea81bac001884';
+export const clientSecrte = 'VnzVfZQ30Ktik0OE0iyXO2W9BrAH4ekgmSwjq6fd';
