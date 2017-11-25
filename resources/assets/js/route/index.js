@@ -14,6 +14,7 @@ const mEdit = r => require.ensure([], () => r(require('../page/admin/postEdit.vu
 const upload = r => require.ensure([], () => r(require('../components/upload.vue')), 'upload');
 const roll = r => require.ensure([], () => r(require('../page/admin/Roll.vue')), 'roll');
 const file = r => require.ensure([], () => r(require('../page/admin/file.vue')), 'file');
+const contact = r => require.ensure([], () => r(require('../page/home/contact.vue')), 'contact');
 
 Vue.use(Router)
 
@@ -27,6 +28,10 @@ export default new Router({
         name: 'index',
         component: index
     }, {
+       path: '/contact',
+       name: 'contact',
+       component: contact
+    },{
         path: '/blog',
         name: 'blog',
         component: bloglist,

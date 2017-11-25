@@ -28,14 +28,9 @@ Route::get('/post/{Pid}', 'PostController@post');
 Route::get('/posts/index', 'PostController@indexPosts');
 Route::get('/posts/list/{page}', 'PostController@listPosts');
 Route::get('/rolls', 'RollController@rolls');
-
+Route::post('/contact', 'ContactController@send');
 //test
-Route::get('/test', function() {
-    $test = new \App\Model\Test;
-    $test->name = 'ZHUXINGZHAO';
-    $test->save();
-    return dd($test);
-});
+Route::get('/test', 'ContactController@send');
 
 
 
