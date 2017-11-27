@@ -215,7 +215,7 @@
                     }
                     a {
                         @include wh(100%, 25px);
-                        @include fontColor(14px, #888);
+                        @include fontColor(14px, #fff);
                         text-decoration: none;
 
                         &:hover {
