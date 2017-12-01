@@ -23,7 +23,7 @@
                                 <v-layout justify-space-between>
                                     <a href="#/" class="body-2">Home</a>
                                     <a href="#/blog" class="body-2">Blog</a>
-                                    <a href="#/about" class="body-2">About</a>
+                                    <a href="#/blog/post/?gid=2" class="body-2">About</a>
                                     <a href="#/contact" class="body-2">Contact</a>
                                 </v-layout>
                             </div>

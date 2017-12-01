@@ -28,7 +28,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                 </router-link>
-                <router-link to="">
+                <router-link to="/blog/post/?gid=2">
                     <v-list-tile @click="">
                         <v-list-tile-action>
                             <v-icon>record_voice_over</v-icon>
@@ -38,7 +38,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                 </router-link>
-                <router-link to="">
+                <router-link to="/contact">
                     <v-list-tile @click="">
                         <v-list-tile-action>
                             <v-icon>contact_mail</v-icon>
