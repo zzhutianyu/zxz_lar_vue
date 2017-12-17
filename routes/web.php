@@ -29,6 +29,18 @@ Route::get('/rolls', 'RollController@rolls');
 Route::post('/contact', 'ContactController@send');
 //test
 Route::get('/test', 'TestController@Test');
+//Route::get('/test/class', function() {
+//    $name = 'jgd';
+//    $age = 18;
+//    $array = array(
+//        'name' => $name,
+//        'age' => $age
+//    );
+//    return view('class', ['class' => $array]);
+//});
+Route::get('/test/class', function() {
+   return view('test', ['name'=> 'asdf']);
+});
 
 
 
