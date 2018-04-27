@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>飞行器随机大法好</title>
+    <title>飞行棋随机大法好</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/element-ui@2.0.3/lib/theme-chalk/index.css">
 <body>
 <div id="app">
-    <el-header class="header" style="margin-top: 4rem;">飞行器随机系统</el-header>
+    <el-header class="header" style="margin-top: 4rem;">飞行棋随机系统</el-header>
     <div class="random-wrap">
         <div class="color" v-text="number[number_random]" :style="{background: color[color_random]}"></div>
         <div class="num"></div>
