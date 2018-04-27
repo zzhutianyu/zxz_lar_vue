@@ -27,7 +27,7 @@ class StuEmailController extends Controller
             $stu_session = substr($sid, 0, 4);
             $group_id = get_group_id(4235, $config['zid'], $config['cookie'], "${stu_session}届${type}") ;
         } else if(strlen($sid) == 10){
-            $type = '硕士生​';
+            $type = '硕士生';
             $stu_session = 20 . substr($sid, 3, 2);
             $group_id = get_group_id(4234, $config['zid'], $config['cookie'], "${stu_session}届${type}");
         } else {
