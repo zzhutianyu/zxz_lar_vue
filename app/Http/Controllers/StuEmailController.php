@@ -26,14 +26,17 @@ class StuEmailController extends Controller
             $type = '本科生';
             $stu_session = substr($sid, 0, 4);
             $group_id = get_group_id(4235, $config['zid'], $config['cookie'], "${stu_session}届${type}") ;
-        } else {
+        } else if(strlen($sid) == 10){
             $type = '硕士生​';
             $stu_session = 20 . substr($sid, 3, 2);
             $group_id = get_group_id(4234, $config['zid'], $config['cookie'], "${stu_session}届${type}");
+        } else {
+            return RJM(null, -1, '姓名、学号或身份证号错误');
         }
 
         $back_url = get_user_query($sid, $config['zid'], $config['cookie'], $group_id, "学生组/${type}/${stu_session}届${type}");
         $params = get_user_form($sid, $config['zid'], $config['cookie'], $back_url);
+
         if (!$params) {
             return RJM(null, -1, '姓名、学号或身份证号错误');
         }

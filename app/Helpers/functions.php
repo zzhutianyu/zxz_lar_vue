@@ -34,7 +34,9 @@ function RJM($data, $err_code, $err_msg = '', $redirect_url = null)
  * 邮件爬取函数
  */
 
-
+/** 获取用户验证参数及cookie
+ * @return array
+ */
 function get_zid_and_cookies(){
     $client = new Client();
     $jar = new CookieJar();
@@ -71,7 +73,14 @@ function get_zid_and_cookies(){
     );
 }
 
-function get_group_id($pgid, $zid, $jar, $group_name) {
+/** 获取用户组id
+ * @param int $pgid 本科组|硕士组
+ * @param string $zid
+ * @param $jar
+ * @param string $group_name
+ * @return string
+ */
+function get_group_id(int $pgid, string $zid, $jar, string $group_name) {
     $client = new Client();
     $response = $client->post('http://mail.zjut.edu.cn/admin/?q=group_list_box.do&zid='.$zid, [
         'cookies' => $jar,
@@ -90,8 +99,15 @@ function get_group_id($pgid, $zid, $jar, $group_name) {
     }
 }
 
-function get_user_query($sid, $zid, $jar, $group_id, $hide_group_path) {
-//    $client = new Client();
+/** 获取下一步传递参数back_url
+ * @param string $sid
+ * @param string $zid
+ * @param $jar
+ * @param string $group_id
+ * @param string $hide_group_path
+ * @return array
+ */
+function get_user_query(string $sid, string $zid, $jar, string $group_id, string $hide_group_path) {
     $query = array(
         'lookup_scope' => 'group',
         'group_id' => $group_id,
@@ -107,20 +123,18 @@ function get_user_query($sid, $zid, $jar, $group_id, $hide_group_path) {
         'table_column' => 'expiration_time,real_name,quota,used_quota,init_time,lock_status',
         'search_column' => ''
     );
-//    $response = $client->post("http://mail.zjut.edu.cn/admin/?" . http_build_query($query), [
-//        'cookies' => $jar
-//    ]);
-//
-//    $html = $response->getBody();
-//    $user_func = '';
-//    $user_func_preg = "/getDetail\(.*?\)/";
-//    preg_match($user_func_preg, $html, $user_func);
-//    $user_func = explode(', ', $user_func[0]);
-//    $user_id = explode("'", $user_func[1])[1];
+
     return $query;
 }
 
-function get_user_form($sid, $zid, $jar, $back_url) {
+/** 获取修改表单参数
+ * @param string $sid
+ * @param string $zid
+ * @param $jar
+ * @param array $back_url
+ * @return array
+ */
+function get_user_form(string $sid, string $zid, $jar, array $back_url) {
     $client = new Client();
     $query = array(
         'q' => 'user_manage.do',
@@ -129,17 +143,21 @@ function get_user_form($sid, $zid, $jar, $back_url) {
         'back_url' => $back_url,
         'zid' => $zid
     );
+
     $response = $client->post("http://mail.zjut.edu.cn/admin/?" . http_build_query($query), [
         'cookies' => $jar
     ]);
+
     $dom = new Dom;
     $dom->load($response->getBody());
     $form = $dom->find('input[name=*]');
     $query = array();
     foreach ($form as $content) {
         $query[$content->getAttribute('name')] = $content->value;
-//        echo $content->value."\n";
     }
+
+
+    // 去除无关参数
     unset($query['randpasswd']);
     unset($query['randpasswd_ck']);
     unset($query['randpasswd_digit']);
@@ -149,8 +167,6 @@ function get_user_form($sid, $zid, $jar, $back_url) {
     unset($query['calendar_status']);
     unset($query['prevStep']);
     return $query;
-
-
 }
 
 
