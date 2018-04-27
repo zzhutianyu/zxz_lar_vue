@@ -43,5 +43,14 @@ Route::get('/test/class', function() {
 });
 
 
+// 应用
+Route::get('/email', "StuEmailController@view");
+Route::post('/email/reset', "StuEmailController@reset");
+
+Route::get('/random', function() {
+    return view('random');
+});
+
+
 
 
